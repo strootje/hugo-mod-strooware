@@ -1,0 +1,14 @@
+[links.made_by.strooware]
+other = "Gemaakt door [Strooware](https://strooware.xyz)"
+
+[socials.instagram.follow]
+other = "Volg {{ . }} op Instagram"
+
+[socials.tiktok.follow]
+other = "Volg @{{ . }} op Tiktok"
+
+[salonized.no_script]
+other = "Je hebt javascript nodig om een boeking te plaatsen"
+
+[leaflet.no_script]
+other = "Je hebt javascript nodig om de kaart te kunnen zien"

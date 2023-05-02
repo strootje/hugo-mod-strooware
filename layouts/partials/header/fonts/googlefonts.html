@@ -1,0 +1,16 @@
+{{- with .Site.Params.fonts.googlefonts -}}
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+	{{- $families := (slice) -}}
+	{{- range . -}}
+		{{- $weights := delimit (.weights | default (slice 400 700)) ";" -}}
+		{{- $families = $families | append (printf "%s:wght@%s" .name $weights) -}}
+	{{- end -}}
+
+	{{- $families = delimit $families "&family" -}}
+	{{- with printf "https://fonts.googleapis.com/css2?family=%s&display=swap" $families -}}
+		<link rel="preload" as="font" href="{{- . -}}" />
+		<link rel="stylesheet" href="{{- . -}}" />
+	{{- end -}}
+{{- end -}}

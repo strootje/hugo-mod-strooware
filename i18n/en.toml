@@ -1,0 +1,14 @@
+[links.made_by.strooware]
+other = "Made by [Strooware](https://strooware.xyz)"
+
+[socials.instagram.follow]
+other = "Follow {{ . }} on Instagram"
+
+[socials.tiktok.follow]
+other = "Follow @{{ . }} on Tiktok"
+
+[salonized.no_script]
+other = "You need to enable javascript in order to make a booking"
+
+[leaflet.no_script]
+other = "You need to enable javascript to view the map"

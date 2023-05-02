@@ -1,0 +1,14 @@
+{{- $subdomain := .Site.Params.seo.goatcounter.subdomain | default "goat" -}}
+{{- $domain := (urls.Parse .Site.BaseURL).Host -}}
+{{- $url := .Site.Params.seo.goatcounter.url | default (printf "%s.%s" $subdomain $domain) -}}
+{{- $param := .Site.Params.seo.goatcounter.param | default "count" -}}
+
+
+<link rel="preconnect" href="https://{{- $url -}}" />
+<link rel="preconnect" as="script" href="https://{{- $url -}}/count.js" />
+
+<script
+	async
+	src="https://{{- $url -}}/count.js"
+	data-goatcounter="https://{{- $url -}}/{{- $param -}}"
+></script>

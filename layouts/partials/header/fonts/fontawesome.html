@@ -1,0 +1,36 @@
+{{- $scratch := .Scratch -}}
+{{- with .Site.Params.fonts.fontawesome -}}
+	{{- $brands := .brands | default false -}}
+	{{- with "cdnjs.cloudflare.com" -}}
+		{{- if not ($scratch.Get .) -}}
+			{{- $scratch.Set . true -}}
+			<link rel="preconnect" href="https://{{- . -}}" />
+		{{- end -}}
+
+		{{- with printf "https://%s/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" . -}}
+			<link rel="preload" as="font" href="{{- . -}}" />
+
+			<link
+				href="{{- . -}}"
+				rel="stylesheet"
+				crossorigin="anonymous"
+				referrerpolicy="no-referrer"
+				integrity="sha512-SgaqKKxJDQ/tAUAAXzvxZz33rmn7leYDYfBP+YoMRSENhf3zJyx3SBASt/OfeQwBHA1nxMis7mM3EV/oYT6Fdw=="
+			/>
+		{{- end -}}
+
+		{{- if $brands -}}
+			{{- with printf "https://%s/ajax/libs/font-awesome/6.4.0/css/brands.min.css" . -}}
+				<link rel="preload" as="font" href="{{- . -}}" />
+
+				<link
+					href="{{- . -}}"
+					rel="stylesheet"
+					crossorigin="anonymous"
+					referrerpolicy="no-referrer"
+					integrity="sha512-9YHSK59/rjvhtDcY/b+4rdnl0V4LPDWdkKceBl8ZLF5TB6745ml1AfluEU6dFWqwDw9lPvnauxFgpKvJqp7jiQ=="
+				/>
+			{{- end -}}
+		{{- end -}}
+	{{- end -}}
+{{- end -}}

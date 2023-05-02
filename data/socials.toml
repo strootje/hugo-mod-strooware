@@ -1,0 +1,11 @@
+[instagram]
+icon = "fa-brands fa-fw fa-instagram"
+follow_url = "https://instagram.com/%s"
+
+[tiktok]
+icon = "fa-brands fa-fw fa-tiktok"
+follow_url = "https://tiktok.com/@%s"
+
+[linkedin]
+icon = "fa-brands fa-fw fa-linkedin-in"
+follow_url = "https://linkedin.com/%s"

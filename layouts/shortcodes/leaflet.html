@@ -1,0 +1,33 @@
+{{- $lon := .Get "lon" -}}
+{{- $lat := .Get "lat" -}}
+{{- $height := .Get "height" | default 240 -}}
+{{- $zoom := (.Get "zoom") | default 15 -}}
+
+{{- $hash := now | md5 -}}
+<div id="leaflet-{{- $hash -}}" style="height: {{- $height -}}px;"></div>
+
+<script>
+    const lon = parseFloat('{{- $lon -}}');
+    const lat = parseFloat('{{- $lat -}}');
+    const zoom = parseInt('{{- $zoom -}}');
+    const popup = '{{- .Inner | markdownify -}}';
+
+    var map = L.map('leaflet-{{- $hash -}}', {
+        center: [lon, lat],
+        zoom: zoom,
+    });
+
+    const layer = '{{- .Site.Params.integrations.leaflet.tile_layer -}}';
+    const attribution = '{{- .Site.Params.integrations.leaflet.attribution | markdownify -}}';
+    L.tileLayer(layer, { attribution: attribution, maxZoom: 19 }).addTo(map);
+
+    var marker = L.marker([lon, lat]).addTo(map);
+
+    if (popup !== '') {
+        marker.bindPopup(popup).openPopup();
+    }
+</script>
+
+<noscript>
+	{{- T "leaflet.no_script" . -}}
+</noscript>

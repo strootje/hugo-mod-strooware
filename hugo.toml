@@ -1,0 +1,3 @@
+[Params.integrations.leaflet]
+tile_layer = "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+attribution = "&copy; [OpenStreetMap](http://www.openstreetmap.org/copyright)"

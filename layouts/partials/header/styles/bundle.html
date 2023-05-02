@@ -1,0 +1,23 @@
+{{- with resources.Get "styles/bundle.scss" -}}
+	{{- $vars := (dict) -}}
+
+	{{- if templates.Exists "partials/header/styles/bundle_vars.html" -}}
+		{{- $vars = merge $vars (partial "header/styles/bundle_vars" .) -}}
+	{{- end -}}
+
+	{{- $opts := (dict
+		"enableSourceMap" hugo.IsProduction
+		"outputStyle" (cond hugo.IsProduction "compressed" "expanded")
+		"vars" $vars)
+	-}}
+
+	{{- with . | resources.ToCSS $opts | fingerprint "sha512" -}}
+		<link
+			rel="stylesheet"
+			href="{{- .RelPermalink -}}"
+			referrerpolicy="no-referrer"
+			crossorigin="use-credentials"
+			integrity="{{- .Data.Integrity -}}"
+		/>
+	{{- end -}}
+{{- end -}}
