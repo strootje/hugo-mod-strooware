@@ -9,3 +9,7 @@ follow_url = "https://tiktok.com/@%s"
 [linkedin]
 icon = "fa-brands fa-fw fa-linkedin-in"
 follow_url = "https://linkedin.com/%s"
+
+[whatsapp]
+icon = "fa-brands fa-fw fa-whatsapp"
+follow_url = "https://wa.me/%s"

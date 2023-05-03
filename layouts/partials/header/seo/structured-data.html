@@ -1,7 +1,1 @@
-{{ if .Site.Params.Feat.useStructuredData -}}
-	{{ $s := (resources.Get "person.json" | resources.ExecuteAsTemplate "person.json" .).Content }}
-<script type="application/ld+json">
-{{ $s | safeJS }}
-</script> {{/* Validate what we have rendered so that we don't render something that is not readable by a robot */}}
-	{{ $_ := unmarshal $s }}
-{{- end }}
+{{/* https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data */}}

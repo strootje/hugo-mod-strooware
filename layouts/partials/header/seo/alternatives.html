@@ -1,8 +1,8 @@
-{{ with .OutputFormats.Get "RSS" -}}
+{{- range .AlternativeOutputFormats -}}
 	<link
-		href="{{ .Permalink }}"
-		rel="alternate"
-		type="application/rss+xml"
-		title="{{ $.Site.Title }}"
+		rel="{{- .Rel -}}"
+		type="{{- .Format.MediaType -}}"
+		href="{{- .RelPermalink -}}"
+		title="{{- $.Site.Title -}}"
 	/>
-{{- end }}
+{{- end -}}

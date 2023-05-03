@@ -1,0 +1,5 @@
+{{- $parts := slice .Title -}}
+{{- if not (in $parts .Site.Title) -}}
+	{{- $parts = $parts | append .Site.Title -}}
+{{- end -}}
+{{- return delimit $parts " | " -}}

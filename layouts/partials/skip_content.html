@@ -1,0 +1,6 @@
+{{- $scope := index . 0 -}}
+{{- with (index . 1) | default "main" -}}
+	<a href="#{{- . -}}" class="sr-only">
+		{{- T "links.skip_to_content" $scope -}}
+	</a>
+{{- end -}}

@@ -1,11 +1,23 @@
 [links.made_by.strooware]
 other = "Gemaakt door [Strooware](https://strooware.xyz)"
 
+[links.skip_to_content]
+other = "Ga naar Content"
+
 [socials.instagram.follow]
 other = "Volg {{ . }} op Instagram"
 
 [socials.tiktok.follow]
 other = "Volg @{{ . }} op Tiktok"
+
+[socials.whatsapp.follow]
+other = "Stuur {{ . }} op Whatsapp een bericht"
+
+[languages.en.text]
+other = "Read this page in English"
+
+[languages.nl.text]
+other = "Lees deze pagina in het Nederlands"
 
 [salonized.no_script]
 other = "Je hebt javascript nodig om een boeking te plaatsen"

@@ -1,2 +1,8 @@
-{{- with .Translations -}}
+{{- range .Translations -}}
+	<link
+		rel="alternative"
+		type="text/html"
+		lang="{{- .Language -}}"
+		href="{{- .RelPermalink -}}"
+	/>
 {{- end -}}

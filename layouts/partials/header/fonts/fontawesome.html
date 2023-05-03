@@ -1,6 +1,8 @@
 {{- $scratch := .Scratch -}}
 {{- with .Site.Params.fonts.fontawesome -}}
 	{{- $brands := .brands | default false -}}
+	{{- $solid := .solid | default false -}}
+
 	{{- with "cdnjs.cloudflare.com" -}}
 		{{- if not ($scratch.Get .) -}}
 			{{- $scratch.Set . true -}}
@@ -29,6 +31,20 @@
 					crossorigin="anonymous"
 					referrerpolicy="no-referrer"
 					integrity="sha512-9YHSK59/rjvhtDcY/b+4rdnl0V4LPDWdkKceBl8ZLF5TB6745ml1AfluEU6dFWqwDw9lPvnauxFgpKvJqp7jiQ=="
+				/>
+			{{- end -}}
+		{{- end -}}
+
+		{{- if $solid -}}
+			{{- with printf "https://%s/ajax/libs/font-awesome/6.4.0/css/solid.min.css" . -}}
+				<link rel="preload" as="font" href="{{- . -}}" />
+
+				<link
+					href="{{- . -}}"
+					rel="stylesheet"
+					crossorigin="anonymous"
+					referrerpolicy="no-referrer"
+					integrity="sha512-yDUXOUWwbHH4ggxueDnC5vJv4tmfySpVdIcN1LksGZi8W8EVZv4uKGrQc0pVf66zS7LDhFJM7Zdeow1sw1/8Jw=="
 				/>
 			{{- end -}}
 		{{- end -}}

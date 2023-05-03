@@ -1,0 +1,5 @@
+{{- $scope := . -}}
+{{- with resources.Get "site.webmanifest" -}}
+	{{- $manifest := . | resources.ExecuteAsTemplate "site.webmanifest" $scope -}}
+	<link rel="manifest" href="{{- $manifest.RelPermalink -}}" />
+{{- end -}}

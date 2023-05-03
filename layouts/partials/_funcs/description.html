@@ -1,0 +1,4 @@
+{{- return (.Description
+	| default .Site.Params.meta.description
+	| default .Summary)
+-}}

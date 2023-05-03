@@ -1,0 +1,19 @@
+{{- $socials := slice -}}
+{{- with .Site.Params.socials -}}
+	{{- range $kind, $user := . -}}
+		{{- with index $.Site.Data.socials $kind -}}
+			{{- $icon := .icon -}}
+			{{- with .follow_url -}}
+				{{- $socials = $socials | append (dict
+					"title" (T (printf "socials.%s.follow" $kind) $user)
+					"url" ((printf . $user) | safeURL)
+					"user" $user
+					"kind" $kind
+					"icon" $icon)
+				-}}
+			{{- end -}}
+		{{- end -}}
+	{{- end -}}
+{{- end -}}
+
+{{- return $socials -}}

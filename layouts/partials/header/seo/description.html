@@ -1,9 +1,3 @@
-<meta name="title" content="{{ .Scratch.Get "title" }}" />
-
-{{ if .Description -}}
-	<meta name="description" content="{{ .Description }}" />
-{{- else if .Site.Params.description -}}
-	<meta name="description" content="{{ .Site.Params.description }}" />
-{{- else if .Summary -}}
-	<meta name="description" content="{{ .Summary }}" />
-{{- end }}
+{{- with partial "_funcs/description" . -}}
+	<meta name="description" content="{{- . -}}" />
+{{- end -}}

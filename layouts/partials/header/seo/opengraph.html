@@ -1,0 +1,25 @@
+{{- $og_type := .Params.seo.opengaph.og_type
+	| default (cond (in (slice "home" "section") .Kind) "website" "article")
+-}}
+<meta name="og:type" content="{{- $og_type -}}" />
+<meta name="og:url" content="{{- .Permalink -}}" />
+<meta name="og:site_name" content="{{- .Site.Title -}}" />
+
+<meta name="og:locale" content="{{- .Lang -}}" />
+{{- range .Translations -}}
+	<meta name="og:locale:alternate" content="{{- .Lang -}}" />
+{{- end -}}
+
+{{- with .Params.seo.opengraph.title
+	| default .Params.seo.title
+	| default (partial "_funcs/title" .)
+-}}
+	<meta name="og:title" content="{{- . -}}" />
+{{- end -}}
+
+{{- with .Params.seo.opengraph.description
+	| default .Params.seo.description
+	| default (partial "_funcs/description" .)
+-}}
+	<meta name="og:description" content="{{- . -}}" />
+{{- end -}}
