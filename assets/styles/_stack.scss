@@ -1,5 +1,6 @@
 
 %-shared {
+	--gap: 0;
 	gap: calc(var(--gap) / 2) var(--gap);
 
 	&:not(.u-no-gap) { --gap: 1rem; }
@@ -18,6 +19,14 @@
 	& > .u-grow,
 	&.u-grow-first > :first-child {
 		flex-grow: 1;
+	}
+
+	&.u-center {
+		justify-content: center;
+	}
+
+	&.u-middle {
+		align-items: center;
 	}
 
 	&.u-space-between {
@@ -55,5 +64,8 @@
 .level {
 	@extend %-shared;
 	display: flex;
-	flex-wrap: wrap;
+
+	&:not(.u-no-wrap) {
+		flex-wrap: wrap;
+	}
 }

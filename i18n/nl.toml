@@ -19,8 +19,5 @@ other = "Read this page in English"
 [languages.nl.text]
 other = "Lees deze pagina in het Nederlands"
 
-[salonized.no_script]
-other = "Je hebt javascript nodig om een boeking te plaatsen"
-
 [leaflet.no_script]
 other = "Je hebt javascript nodig om de kaart te kunnen zien"
