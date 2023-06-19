@@ -11,7 +11,7 @@
 		"vars" $vars)
 	-}}
 
-	{{- with . | resources.ToCSS $opts | fingerprint "sha512" -}}
+	{{- with . | resources.ToCSS $opts | resources.PostCSS | fingerprint "sha512" | resources.PostProcess -}}
 		<link
 			rel="stylesheet"
 			href="{{- .RelPermalink -}}"
