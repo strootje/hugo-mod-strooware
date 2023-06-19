@@ -18,6 +18,3 @@ other = "Read this page in English"
 
 [languages.nl.text]
 other = "Lees deze pagina in het Nederlands"
-
-[leaflet.no_script]
-other = "You need to enable javascript to view the map"
