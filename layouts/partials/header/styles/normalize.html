@@ -6,7 +6,7 @@
 	{{- end -}}
 
 	{{- with printf "https://%s/ajax/libs/normalize/8.0.1/normalize.min.css" . -}}
-		<link rel="preload" as="style" href="{{- . -}}" />
+		<link rel="preload" href="{{- . -}}" as="style" />
 
 		<link
 			href="{{- . -}}"
