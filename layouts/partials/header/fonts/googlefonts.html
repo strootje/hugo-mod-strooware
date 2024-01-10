@@ -10,7 +10,7 @@
 
 	{{- $families = delimit $families "&family" -}}
 	{{- with printf "https://fonts.googleapis.com/css2?family=%s&display=swap" $families -}}
-		<link rel="preload" href="{{- . -}}" as="style" />
+		<link rel="preload" href="{{- . -}}" as="style" crossorigin />
 		<link rel="stylesheet" href="{{- . -}}" />
 	{{- end -}}
 {{- end -}}
