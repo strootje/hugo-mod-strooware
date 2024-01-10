@@ -1,3 +1,7 @@
+{{- $langCode := or .Language.LanguageCode .Language.Lang -}}
+<link rel="alternative" type="text/html" href="{{- .Permalink -}}" hreflang="{{- $langCode -}}" />
+
 {{- range .Translations -}}
-	<link rel="alternative" type="text/html" href="{{- .Permalink -}}" hreflang="{{- .Language -}}" />
+	{{ $langCode = or .Language.LanguageCode .Language.Lang }}
+	<link rel="alternative" type="text/html" href="{{- .Permalink -}}" hreflang="{{- $langCode -}}" />
 {{- end -}}
