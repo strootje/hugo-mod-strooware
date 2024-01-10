@@ -1,7 +1,4 @@
 {{- with .Site.Params.fonts.googlefonts -}}
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
 	{{- $families := (slice) -}}
 	{{- range . -}}
 		{{- $weights := delimit (.weights | default (slice 400 700)) ";" -}}
