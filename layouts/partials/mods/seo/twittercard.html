@@ -1,6 +1,5 @@
-{{/* https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards
-	{{- $card_type := .Params.seo.twitter.card_type | default "summary"
--}}
+https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards
+{{- $card_type := .Params.seo.twitter.card_type | default "summary" -}}
 <meta name="twitter:card" content="{{- $card_type -}}" />
 
 {{- with .Params.seo.twitter.title -}}
@@ -51,4 +50,3 @@
 		/>
 		*/}}
 {{- end -}}
-*/}}

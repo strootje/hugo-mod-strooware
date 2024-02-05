@@ -1,8 +1,10 @@
 {{/* See: https://developers.google.com/search/docs/appearance/structured-data/local-business */}}
 
+{{- $business := (dict) -}}
+
 {{- if .IsHome -}}
 	{{- with .Site.Params.LocalBusiness -}}
-		{{- $business := (dict
+		{{- $business = (dict
 			"@context" "https://schema.org"
 			"@type" (.Kind | default "LocalBusiness")
 			"name" (.Name | default $.Site.Title)
@@ -29,11 +31,11 @@
 		{{- with .Address -}}
 			{{- $business = merge $business (dict "address" (dict
 				"@type" "PostalAddress"
-				"streetAddress" "Middelandplein 26b"
-				"addressLocality" "Rotterdam"
-				"postalCode" "1234AB"
-				"addressRegion" "Zuid-Holland"
-				"addressCountry" "Netherlands"))
+				"streetAddress" .Street
+				"addressLocality" .City
+				"postalCode" .PostalCode
+				"addressRegion" .Province
+				"addressCountry" .Country))
 			-}}
 		{{- else -}}
 			{{- errorf "Cannot create LocalBusiness without address" -}}
@@ -41,7 +43,7 @@
 
 		{{- with .GeoCoordinates -}}
 			{{- $business = merge $business (dict "geo" (dict
-				"@type": "GeoCoordinates",
+				"@type" "GeoCoordinates"
 				"latitude" .Latitude
 				"longitude" .Longitude))
 			-}}
@@ -52,7 +54,7 @@
 		{{- end -}}
 
 		{{/* images */}}
-
-		{{- return $business -}}
 	{{- end -}}
 {{- end -}}
+
+{{- return $business -}}
