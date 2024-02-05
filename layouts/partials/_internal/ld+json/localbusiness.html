@@ -8,7 +8,7 @@
 			"@context" "https://schema.org"
 			"@type" (.Kind | default "LocalBusiness")
 			"name" (.Name | default $.Site.Title)
-			"url" .Permalink)
+			"url" $.Site.BaseURL)
 		-}}
 
 		{{- with .Contact.Email -}}
