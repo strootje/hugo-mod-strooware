@@ -1,0 +1,26 @@
+{{/* See: https://developers.google.com/search/docs/appearance/structured-data/faqpage */}}
+
+{{- $isFaqPage = eq "faqpage" (.Page.Params.Type | lower) -}}
+
+{{- if (and .IsSection $isFaqPage) -}}
+	{{- $questions := (slice) -}}
+
+	{{- range .Pages -}}
+		{{- $answer := (dict
+			"@type" "Answer"
+			"text" .Plain)
+		-}}
+
+		{{- $questions = $questions | append (dict
+			"@type" "Question"
+			"name" .Title
+			"acceptedAnswer" $answer)
+		-}}
+	{{- end -}}
+
+	{{- return (dict
+		"@context" "https://schema.org"
+		"@type" "FAQPage"
+		"mainEntity" $questions)
+	-}}
+{{- end -}}

@@ -8,12 +8,7 @@
 
 	{{- range $size, $name := $sizes -}}
 		{{- with $icon.Fit (printf "%s png" $size) | resources.Copy $name -}}
-			<link
-				ref="icon"
-				type="image/png"
-				sizes="{{- .Width -}}x{{- .Height -}}"
-				href="{{- .RelPermalink -}}"
-			/>
+			<link ref="icon" type="image/png" sizes="{{- .Width -}}x{{- .Height -}}" href="{{- .RelPermalink -}}" />
 		{{- end -}}
 	{{- end -}}
 {{- end -}}

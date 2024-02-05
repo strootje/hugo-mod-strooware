@@ -1,0 +1,3 @@
+{{- with .Params.Referrer | default "strict-origin-when-cross-origin" -}}
+	<meta name="referrer" content="{{- . -}}" />
+{{- end -}}

@@ -1,0 +1,3 @@
+{{- with (slice .Page.Title .Site.Title) -}}
+	<title>{{- delimit . " | " -}}</title>
+{{- end -}}

@@ -1,3 +1,3 @@
-module git.strooware.nl/hugo-mod-strooware
+module git.strooware.nl/hugomods/strooware
 
 go 1.20

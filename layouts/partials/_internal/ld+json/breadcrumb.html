@@ -1,0 +1,23 @@
+{{/* See: https://developers.google.com/search/docs/appearance/structured-data/breadcrumb */}}
+
+{{- $breadcrumbs := (slice) -}}
+{{- range $i, $_ := .Ancestors -}}
+	{{- $breadcrumbs = $breadcrumbs | append (dict
+		"@type" "ListItem"
+		"position" (math.Sum $i 1)
+		"name" .Title
+		"item" .Permalink)
+	-}}
+{{- end -}}
+
+{{- $breadcrumbs = $breadcrumbs | append (dict
+	"@type" "ListItem"
+	"position" (math.Sum ($breadcrumbsCrumbs | len) 1)
+	"name" .Title)
+-}}
+
+{{- return (dict
+	"@context" "https://schema.org"
+	"@type" "BreadcrumbList"
+	"itemListElement" $breadcrumbs)
+-}}

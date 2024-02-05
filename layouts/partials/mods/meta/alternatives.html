@@ -1,0 +1,3 @@
+{{- range .AlternativeOutputFormats -}}
+	<link rel="{{- .Rel -}}" type="{{- .Format.MediaType -}}" href="{{- .RelPermalink -}}" title="{{- $.Site.Title -}}" />
+{{- end -}}

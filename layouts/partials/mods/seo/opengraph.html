@@ -1,6 +1,4 @@
-{{- $og_type := .Params.seo.opengaph.og_type
-	| default (cond (in (slice "home" "section") .Kind) "website" "article")
--}}
+{{/* {{- $og_type := .Params.seo.opengaph.og_type | default (cond (in (slice "home" "section") .Kind) "website" "article") -}}
 <meta name="og:type" content="{{- $og_type -}}" />
 <meta name="og:url" content="{{- .Permalink -}}" />
 <meta name="og:site_name" content="{{- .Site.Title -}}" />
@@ -23,3 +21,4 @@
 -}}
 	<meta name="og:description" content="{{- . -}}" />
 {{- end -}}
+*/}}

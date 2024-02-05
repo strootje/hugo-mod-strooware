@@ -1,0 +1,58 @@
+{{/* See: https://developers.google.com/search/docs/appearance/structured-data/local-business */}}
+
+{{- if .IsHome -}}
+	{{- with .Site.Params.LocalBusiness -}}
+		{{- $business := (dict
+			"@context" "https://schema.org"
+			"@type" (.Kind | default "LocalBusiness")
+			"name" (.Name | default $.Site.Title)
+			"url" .Permalink)
+		-}}
+
+		{{- with .Contact.Email -}}
+			{{- $business = merge $business (dict "email" .) -}}
+		{{- end -}}
+
+		{{- with .Contact.Telephone -}}
+			{{- $business = merge $business (dict "telephone" .) -}}
+		{{- end -}}
+
+		{{- with .OpeningHours -}}
+			{{- $business = merge $business (dict "openingHoursSpecification" (slice (dict
+				"@type" "OpeningHoursSpecification"
+				"dayOfWeek" (split .Days ", ")
+				"opens" .Opens
+				"closes" .Closes)))
+			-}}
+		{{- end -}}
+
+		{{- with .Address -}}
+			{{- $business = merge $business (dict "address" (dict
+				"@type" "PostalAddress"
+				"streetAddress" "Middelandplein 26b"
+				"addressLocality" "Rotterdam"
+				"postalCode" "1234AB"
+				"addressRegion" "Zuid-Holland"
+				"addressCountry" "Netherlands"))
+			-}}
+		{{- else -}}
+			{{- errorf "Cannot create LocalBusiness without address" -}}
+		{{- end -}}
+
+		{{- with .GeoCoordinates -}}
+			{{- $business = merge $business (dict "geo" (dict
+				"@type": "GeoCoordinates",
+				"latitude" .Latitude
+				"longitude" .Longitude))
+			-}}
+		{{- end -}}
+
+		{{- with .PriceRange -}}
+			{{- $business = merge $business (dict "priceRange" .) -}}
+		{{- end -}}
+
+		{{/* images */}}
+
+		{{- return $business -}}
+	{{- end -}}
+{{- end -}}

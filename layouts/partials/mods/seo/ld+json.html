@@ -1,0 +1,19 @@
+{{/* https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data */}}
+
+{{- $schema := (slice) -}}
+
+{{- with partial "_internal/ld+json/breadcrumb" . -}}
+	{{- $schema = $schema | append . -}}
+{{- end -}}
+
+{{- with partial "_internal/ld+json/faqpage" . -}}
+	{{- $schema = $schema | append . -}}
+{{- end -}}
+
+{{- with partial "_internal/ld+json/localbusiness" . -}}
+	{{- $schema = $schema | append . -}}
+{{- end -}}
+
+{{- with $schema | -}}
+<script type="application/ld+json">{{- . -}}</script>
+{{- end -}}
