@@ -12,7 +12,7 @@
 
 {{- $breadcrumbs = $breadcrumbs | append (dict
 	"@type" "ListItem"
-	"position" (math.Sum ($breadcrumbsCrumbs | len) 1)
+	"position" (math.Sum ($breadcrumbs | len) 1)
 	"name" .Title)
 -}}
 
