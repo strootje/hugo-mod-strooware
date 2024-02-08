@@ -1,0 +1,6 @@
+{{- with resources.Get "styles/bundle.css" -}}
+	{{- $opts := (dict "inlineImports" true) -}}
+	{{- with . | postCSS $opts | fingerprint "sha512" | resources.PostProcess -}}
+		<link rel="stylesheet" href="{{- .RelPermalink -}}" integrity="{{- .Data.Integrity -}}" crossorigin="use-credentials" referrerpolicy="no-referrer" />
+	{{- end -}}
+{{- end -}}
