@@ -1,0 +1,19 @@
+{
+	"instagram": {
+		"urls": {
+			"follow": "https://instagram.com/%s"
+		}
+	},
+
+	"tiktok": {
+		"urls": {
+			"follow": "https://tiktok.com/@%s"
+		}
+	},
+
+	"whatsapp": {
+		"urls": {
+			"follow": "https://wa.me/%s"
+		}
+	}
+}

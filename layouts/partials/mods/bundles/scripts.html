@@ -1,6 +1,5 @@
 {{- with resources.Get "scripts/bundle.js" -}}
-	{{- $opts := (dict "inlineImports" true) -}}
-	{{- with . | fingerprint "sha512" -}}
+	{{- with . | js.Build | fingerprint "sha512" -}}
 		<script src="{{- .RelPermalink -}}" integrity="{{- .Data.Integrity -}}" crossorigin="use-credentials" defer></script>
 	{{- end -}}
 {{- end -}}
